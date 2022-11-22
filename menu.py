@@ -1,3 +1,5 @@
+from login import logIn
+
 def menu():
 
     print("""
@@ -5,6 +7,14 @@ def menu():
     ingrese sus credenciales  
     """)
 
+    entrar =  logIn()
+
+    if entrar:
+        print('wolo')
+    else:
+        print('error')
+
+    
 
 
-    login()
+menu()

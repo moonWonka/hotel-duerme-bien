@@ -1,16 +1,50 @@
 from conexion import Conexion
 
+def buscarUser(user):
+    conectar = Conexion()
+    users = conectar.mostrarUsersAdmin()
+    conectar.cerrarConexion()
+    usersList = []
+
+    for usuario in users:
+        usersList.append(usuario[0])
+
+    if user in usersList:
+        print('user encotrado')
+        return True
+    else:
+        return False
+
+def buscarPass(user, userPass):
+    conectar = Conexion()
+    passGuardada = conectar.mostrarUserPass(user)
+    conectar.cerrarConexion()
+    #print(type(passGuardada), 'wonka', type(userPass))
+    if passGuardada == userPass:
+        print('Bienvenido')
+        return True
+    else:
+        False
+
 def logIn():
-    userName = input('ingrese su usuario')
-    userPass = input('ingrese su password')
 
-    
+    #pedir credenciales
+    userName = input('ingrese su usuario: ')
+    userPass = int(input('ingrese su password: '))
 
-    if userName in (tabla a buscar):
+    #buscar usuario en base de datos
+    encontrado = buscarUser(userName)
 
-        if user == userPass and pwd == userPass:
-            print('ingreso exitoso')
+    if encontrado:
+        #revisar password en base de datos
+        verificarPass = buscarPass(userName, userPass)
 
-
+        if verificarPass:
+            return True
         else:
-            print('Error de credenciales')
+            print('credenciales incorrectas')
+            return False
+    else:
+        print('credenciales incorrectas')
+        return False
+
