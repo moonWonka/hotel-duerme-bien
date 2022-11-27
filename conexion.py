@@ -66,3 +66,7 @@ class Conexion:
 # a.mostrarUsersAdmin()
 # a.insertarUserAdmin()
 # a.mostrarUsersAdmin()
+
+
+
+#guardado ejemplo
