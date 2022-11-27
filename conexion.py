@@ -27,7 +27,7 @@ class Conexion:
             print('error al realizar la consulta', err)
         finally:
             self.cerrarConexion()
-
+        #select users admins
     def mostrarUserPass(self, user):
         sql = "select adm_pass from administradores where adm_user = '{}'".format(user)
         try:
@@ -60,14 +60,6 @@ class Conexion:
         self.cursor.close()
         self.conexion.close()
         print('conexion cerrada! bye')
-
-#a = Conexion()
-#a.mostrarUserPass('willy')
-# a.mostrarUsersAdmin()
-# a.insertarUserAdmin()
-# a.mostrarUsersAdmin()j
-
-
 
 #-------CRUD tabla Encargado--------------->
     
