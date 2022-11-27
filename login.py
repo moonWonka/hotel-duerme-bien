@@ -3,7 +3,6 @@ from conexion import Conexion
 def buscarUser(user):
     conectar = Conexion()
     users = conectar.mostrarUsersAdmin()
-    conectar.cerrarConexion()
     usersList = []
 
     for usuario in users:
@@ -18,7 +17,6 @@ def buscarUser(user):
 def buscarPass(user, userPass):
     conectar = Conexion()
     passGuardada = conectar.mostrarUserPass(user)
-    conectar.cerrarConexion()
     #print(type(passGuardada), 'wonka', type(userPass))
     if passGuardada == userPass:
         print('Bienvenido')

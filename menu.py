@@ -1,5 +1,6 @@
 from login import logIn
-
+import os
+os.system('cls')
 def menu():
 
     print("""
