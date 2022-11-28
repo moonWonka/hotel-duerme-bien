@@ -6,7 +6,7 @@ class Conexion:
             host='20.226.74.184',
             user = 'wonka',
             passwd = '',
-            database = 'hotel duerme bienk')
+            database = 'hotelk')
 
         self.cursor = self.conexion.cursor()
         #conectado = self.conexion.is_connected()
@@ -15,6 +15,8 @@ class Conexion:
         #    print('esta conectado')
 
 #-------CRUD tabla Administradores--------------->
+
+#--------------selects--------------->
 
     def mostrarUsersAdmin(self):
         sql = 'select adm_user from administradores'
@@ -39,7 +41,7 @@ class Conexion:
             print('error al realizar la consulta pass', err)
         finally:
             self.cerrarConexion()
-
+#------------------------------------------------------->
     # insertar
     def insertarUserAdmin(self):
         #INSERT INTO administradores (adm_id, adm_user, pass) VALUES (111, 'willy', 123); 
@@ -49,8 +51,6 @@ class Conexion:
             self.conexion.commit()
         except Exception as err:
             print('error al realizar el insert', err)
-        finally:
-            self.cerrarConexion()
  
     # upgrade
 
@@ -67,7 +67,7 @@ class Conexion:
         sql="INSERT INTO encargados (enc_id,enc_user,enc_password) VALUE ({}, '{}', '{}')".format(enc_id,enc_user,enc_password)
         try:
             self.cursor.execute(sql)
-            self.connection.commit()    
+            self.conexion.commit()    
             print("cuenta ingresada")
         except Exception as e:
             raise e
