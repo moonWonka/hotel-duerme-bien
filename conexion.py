@@ -15,7 +15,6 @@ class Conexion:
         #    print('esta conectado')
 
 #-------CRUD tabla Administradores--------------->
-
 #--------------selects--------------->
 
     def mostrarUsersAdmin(self):
