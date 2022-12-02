@@ -1,6 +1,15 @@
 from login import logIn
 import os
 os.system('cls')
+
+def menuAdm():
+    #os.system('cls')
+    print("""Menu Adminstradror""")
+
+def menuEncargado():
+    os.system('cls')
+    print("""Menu Encargado""")
+
 def menu():
 
     print("""
@@ -11,11 +20,11 @@ def menu():
     entrar =  logIn()
 
     if entrar:
-        print('wolo')
+        if entrar == 'adm':
+            menuAdm()
+        elif entrar == 'encargado':
+            menuEncargado()
     else:
         print('error')
-
-    
-
 
 menu()
