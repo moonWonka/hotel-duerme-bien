@@ -1,28 +1,67 @@
 from conexion import Conexion
 
-def buscarUser(user):
-    conectar = Conexion()
-    users = conectar.mostrarUsersAdmin()
+def buscarUserAdmin(user):
+    consultaDB = Conexion()
+    consultaAdmin = consultaDB.mostrarUsersAdmin()
+    #print(consultaAdmin)
     usersList = []
-
-    for usuario in users:
+    
+    for usuario in consultaAdmin:
         usersList.append(usuario[0])
 
     if user in usersList:
-        print('user encotrado')
         return True
     else:
         return False
 
-def buscarPass(user, userPass):
+def buscarUserEncargado(user):
+    consultaDb = Conexion()
+    consultaEncargados = consultaDb.mostrarEncargados()
+    #print(consultaEncargados)
+    usersList = []
+
+    for usuario in consultaEncargados:
+        usersList.append(usuario[0])
+
+    if user in usersList:
+        return True
+    else:
+        return False
+
+def buscarUser(user):
+#------------si es un admin---------->
+    encontradoAdm = buscarUserAdmin(user)
+
+    if encontradoAdm:
+        return 'adm'
+
+#------------si es un admin---------->
+    encontradoEncargado = buscarUserEncargado(user)
+
+    if encontradoEncargado:
+        return 'encargado' 
+    else:
+#------------si no se encuntra----------> 
+        return False
+
+def buscarPassEncargado(user, userPass):
+    conectar = Conexion()
+    passGuardada = conectar.mostrarPassEnc(user)
+    if passGuardada == str(userPass):
+        return True
+    else:
+        print('Error en contraseña')
+        return False
+    
+def buscarPassAdm(user, userPass):
     conectar = Conexion()
     passGuardada = conectar.mostrarUserPass(user)
     #print(type(passGuardada), 'wonka', type(userPass))
     if passGuardada == userPass:
-        print('Bienvenido')
         return True
     else:
-        False
+        print('Error en contraseña')
+        return False
 
 def logIn():
 
@@ -30,19 +69,17 @@ def logIn():
     userName = input('ingrese su usuario: ')
     userPass = int(input('ingrese su password: '))
 
-    #buscar usuario en base de datos
+    #buscar un suario en base de datos
     encontrado = buscarUser(userName)
 
-    if encontrado:
-        #revisar password en base de datos
-        verificarPass = buscarPass(userName, userPass)
-
-        if verificarPass:
-            return True
-        else:
-            print('credenciales incorrectas')
-            return False
+    if encontrado == 'adm':
+        credenciales = buscarPassAdm(userName, userPass)
+        if credenciales:
+            return 'adm'
+    elif encontrado == 'encargado':
+        credenciales = buscarPassEncargado(userName, userPass) 
+        if credenciales:
+            return 'encargado'
     else:
-        print('credenciales incorrectas')
         return False
 

@@ -9,8 +9,8 @@ class Conexion:
             database = 'hotelk')
 
         self.cursor = self.conexion.cursor()
+        
         #conectado = self.conexion.is_connected()
-
         #if conectado:
         #    print('esta conectado')
 
@@ -52,13 +52,12 @@ class Conexion:
             print('error al realizar el insert', err)
  
     # upgrade
-
     # delete
 
     def cerrarConexion(self):
         self.cursor.close()
         self.conexion.close()
-        print('conexion cerrada! bye')
+        #print('conexion cerrada! bye')
 
 #-------CRUD tabla Encargado--------------->
     
@@ -82,14 +81,15 @@ class Conexion:
         finally:
             self.cursor.close()
     
-    def mostrarPassEnc(self,enc_user):
+    def mostrarPassEnc(self, enc_user):
         sql = "SELECT enc_password FROM encargados WHERE enc_user = '{}'".format(enc_user)
+        #print(sql)
         try:
             self.cursor.execute(sql)
             query = self.cursor.fetchone()
             return query[0]
         except Exception as err:
-            print('error al realizar la consulta pass', err)
+            print('error al realizar la consulta password', err)
         finally:
             self.cursor.close()
     
@@ -118,3 +118,7 @@ class Conexion:
             self.conexion.commit()
         except Exception as e:
             raise e
+
+
+# a = Conexion()
+# a.mostrarPassEnc('pez')
