@@ -9,8 +9,8 @@ class Conexion:
             database = 'hotelk')
 
         self.cursor = self.conexion.cursor()
+        
         #conectado = self.conexion.is_connected()
-
         #if conectado:
         #    print('esta conectado')
 
