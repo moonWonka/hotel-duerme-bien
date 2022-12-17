@@ -28,17 +28,19 @@ def buscarUserEncargado(user):
     else:
         return False
 
-def buscarUserPass(user):
+def buscarTipoUser(user):
 #------------si es un admin---------->
     encontradoAdm = buscarUserAdmin(user)
 
     if encontradoAdm:
+        print('Bienvenido administrador')
         return 'adm'
 
-#------------si es un admin---------->
+#------------si es un encargado---------->
     encontradoEncargado = buscarUserEncargado(user)
 
     if encontradoEncargado:
+        print('Bienvenido encargado')
         return 'encargado' 
     else:
 #------------si no se encuntra----------> 
@@ -47,7 +49,7 @@ def buscarUserPass(user):
 def buscarPassEncargado(user, userPass):
     conectar = Conexion()
     passGuardada = conectar.mostrarPassEnc(user)
-    if passGuardada == str(userPass):
+    if passGuardada == userPass:
         return True
     else:
         print('Error en contraseña')
@@ -63,14 +65,15 @@ def buscarPassAdm(user, userPass):
         print('Error en contraseña')
         return False
 
+#funcion principal
 def logIn():
 
     #pedir credenciales
     userName = input('ingrese su usuario: ')
-    userPass = int(input('ingrese su password: '))
+    userPass = input('ingrese su password: ')
 
     #buscar un suario en base de datos
-    encontrado = buscarUserAdmin(userName)
+    encontrado = buscarTipoUser(userName)
 
     if encontrado == 'adm':
         credenciales = buscarPassAdm(userName, userPass)

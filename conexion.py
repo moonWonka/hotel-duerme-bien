@@ -66,12 +66,11 @@ class Conexion:
         try:
             self.cursor.execute(sql)
             self.conexion.commit()    
-            print("cuenta ingresada")
         except Exception as e:
             raise e
 
     def mostrarEncargados(self):
-        sql="SELECT enc_user FROM encargados"
+        sql="SELECT enc_user, enc_id FROM encargados"
         try:
             self.cursor.execute(sql)
             query = self.cursor.fetchall()
@@ -214,5 +213,5 @@ class Conexion:
 
 
 
-a = Conexion()
-print(a.mostrarPassEnc('pez'))
+# a = Conexion()
+# a.insertarEncagados(1, 'admin', 'admin')
