@@ -28,7 +28,7 @@ def buscarUserEncargado(user):
     else:
         return False
 
-def buscarUser(user):
+def buscarUserPass(user):
 #------------si es un admin---------->
     encontradoAdm = buscarUserAdmin(user)
 
@@ -70,12 +70,12 @@ def logIn():
     userPass = int(input('ingrese su password: '))
 
     #buscar un suario en base de datos
-    encontrado = buscarUser(userName)
+    encontrado = buscarUserAdmin(userName)
 
     if encontrado == 'adm':
         credenciales = buscarPassAdm(userName, userPass)
         if credenciales:
-            return 'adm'
+            return 'adm'          
     elif encontrado == 'encargado':
         credenciales = buscarPassEncargado(userName, userPass) 
         if credenciales:
