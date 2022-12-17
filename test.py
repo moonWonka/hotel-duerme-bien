@@ -1,11 +1,13 @@
-a = [('willy'), ('dany')]
-b = [('dany',), ('willy',)]
+#cifrar en sha256
+import hashlib
 
-for ele in b:
-    print(ele[0])
+def cifrar(password):
+    hashlib_obj = hashlib.sha256()
+    hashlib.update(password.encode('utf-8'))
+    cifrado = hashlib_obj.hexdigest()
+    return cifrado.hexdigest()
 
-print(b[1][0])
-print('wolo pedasotes') 
 
-
-#oliii
+#menu()
+#menuAdmin()
+#menuEncargado()
