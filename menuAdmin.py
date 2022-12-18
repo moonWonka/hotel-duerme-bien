@@ -1,6 +1,5 @@
 from conexion import Conexion
 from test import cifrar
-from login import logIn
 import os
 os.system('cls')
 
@@ -43,7 +42,10 @@ def menuAdm():
 
     if opcion == 2:
         os.system('cls')
-        print("====================Buscar encargaados====================")
+        print("""
+            ====================mostrar Encargados ======================
+            
+            """)
 
         conexionDB = Conexion()
         allEncargados = conexionDB.mostrarEncargados()
@@ -54,16 +56,34 @@ def menuAdm():
             count += 1
 
     if opcion == 3:
-        print("====================modificar encargaado====================")
+        os.system('cls')
+        print("""
+            ====================modificar encargaado====================
+                
+                """)
 
         conexionDB = Conexion()
-        enc_user = input('ingrese id del encargado a modificar: ')
+        enc_user = int(input('ingrese id del encargado a modificar: '))
         enc_newUser = input('ingrese el nuevo nombre del encargado: ')
+        try:
+            conexionDB.updateNameEnc(enc_newUser, enc_user)
+            print('encargado modificado')
 
-        conexionDB.updateNameEnc(enc_newUser, enc_user)
+        except:
+            print('error al modificar encargado')
 
     if opcion == 4:
-        print("====================eliminar encargaado====================")
+        os.system('cls')
+        print("""
+            ====================eliminar encargaado====================
 
+            """)
 
-
+        conexionDB = Conexion()
+        enc_user = int(input('ingrese id del encargado a eliminar: '))
+        try:
+            conexionDB.deleteEnc(enc_user)
+            print('encargado eliminado')
+        
+        except:
+            print('error al eliminar encargado')

@@ -3,12 +3,6 @@ from menuAdmin import menuAdm
 import os
 os.system('cls')
 
-
-
-def menuEncargado():
-    os.system('cls')
-    print("""====================Menu Encargado=======================""")
-
 # menu general
 
 def menu():

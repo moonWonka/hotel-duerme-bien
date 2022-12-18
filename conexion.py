@@ -102,16 +102,15 @@ class Conexion:
             raise e
     
     def updateNameEnc(self, enc_user, id):
-        sql= "UPDATE encargados SET enc_user='{}' WHERE enc_id='{}'".format(enc_user, id)
-        print(sql)
+        sql= "UPDATE encargados SET enc_user ='{}' WHERE enc_id = {}".format(enc_user, id)
         try:
             self.cursor.execute(sql)
             self.conexion.commit()
         except Exception as e:
             raise e
 
-    def deleteEnc(self,enc_user):
-        sql="DELETE FROM encargados WHERE enc_user = '{}'".format(enc_user)
+    def deleteEnc(self,enc_id):
+        sql="DELETE FROM encargados WHERE enc_id = {}".format(enc_id)
         try:
             self.cursor.execute(sql)
             self.conexion.commit()
