@@ -7,7 +7,7 @@ def menuEncargado():
     print("""====================Menu Encargado=======================
     
         1. 
-        2. 
+        2. revisar habitaciones disponibles
         3. 
         4. """)
 
@@ -18,3 +18,17 @@ def menuEncargado():
     
     if opcion == 1:
         print("CAT")
+
+
+    if opcion == 2:
+        print('=============== revisar habitaciones disponibles ====================')
+
+        conexionDB = Conexion()
+        allHabitaciones = conexionDB.mostrarHabitaciones()
+        count = 1
+        for habitacion in allHabitaciones:
+            print("-{} -id: {} -nombre: {}".format(count, habitacion[0], habitacion[1]))
+            print("------------------------------------------------------------")
+            count += 1
+            
+
