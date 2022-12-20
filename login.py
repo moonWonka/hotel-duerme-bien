@@ -1,4 +1,5 @@
 from conexion import Conexion
+from test import cifrar
 
 def buscarUserAdmin(user):
     consultaDB = Conexion()
@@ -72,15 +73,17 @@ def logIn():
     userName = input('ingrese su usuario: ')
     userPass = input('ingrese su password: ')
 
+    userPassCifrada = cifrar(userPass)
+
     #buscar un suario en base de datos
     encontrado = buscarTipoUser(userName)
 
     if encontrado == 'adm':
-        credenciales = buscarPassAdm(userName, userPass)
+        credenciales = buscarPassAdm(userName, userPassCifrada)
         if credenciales:
             return 'adm'          
     elif encontrado == 'encargado':
-        credenciales = buscarPassEncargado(userName, userPass) 
+        credenciales = buscarPassEncargado(userName, userPassCifrada) 
         if credenciales:
             return 'encargado'
     else:

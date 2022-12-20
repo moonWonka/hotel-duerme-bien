@@ -1,5 +1,6 @@
 from login import logIn
 from menuAdmin import menuAdm
+from menuEncargado import menuEncargado
 import os
 os.system('cls')
 
