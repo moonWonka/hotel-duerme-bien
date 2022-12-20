@@ -33,7 +33,7 @@ def menuAdm():
             enc_password = input('ingrese la contraseña del encargado: ')
             
             cifradoPass = cifrar(enc_password)
-            print(cifradoPass)
+            # print(cifradoPass)
             conexionDB.insertarEncagados(enc_id,enc_user,cifradoPass)
 
             print('encargado creado')
