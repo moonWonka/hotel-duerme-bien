@@ -17,13 +17,15 @@ def menuEncargado():
         print('ingrese una opcion correcta UwU')
     
     if opcion == 1:
+        conexionDB = Conexion()
         os.system('cls')
-        print("Registro Pasajeros")
-        print("ingrese los datos del pasajero")
-        cli_nombre = input("ingrese el nombre del pasajero: ")
-        cli_apellidoP = input("ingrese el apellido del pasajero: ")
-        cli_apellidoM = input("ingrese el apellido del pasajero: ")
-        cli_rut = input("ingrese el rut del pasajero: ")
+        print("===========Ingrese los datos del Cliente==============")
+        cli_nombre = input("Ingrese el nombre del Cliente: ")
+        cli_apellidoP = input("Ingrese el apellido paterno del Cliente: ")
+        cli_apellidoM = input("Ingrese el apellido materno del Cliente: ")
+        cli_rut = input("Ingrese el rut del Cliente: ")
+        conexionDB.ingresarCli(cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM) 
+
 
 
 
