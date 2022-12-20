@@ -121,12 +121,11 @@ class Conexion:
 #-------CRUD Hab--------------->
 
     def mostrarHabitaciones(self):
-        sql="SELECT hab_id,hab_numero_hab,hab_ubicacion,hab_capacidad,hab_tipo,hab_costo FROM habitaciones where hab_estado=1"
+        sql="SELECT * FROM habitaciones where hab_estado = 1"
         #0 False - 1 True
         try:
             self.cursor.execute(sql)
             lista = self.cursor.fetchall()
-            print(lista)
             return lista
         except Exception as err:
             print('ERROR: problemas al realizar la consulta', err)
@@ -145,12 +144,11 @@ class Conexion:
         finally:
             self.cerrarConexion()
 
-    def borrarHab(self,hab_numero_hab):
-        sql="UPDATE habitaciones SET hab_estado = '0' WHERE habitaciones.hab_numero_hab = '{}'".format(hab_numero_hab)
+    def modificarEstadoHabitacion(self,hab_numero_hab, hab_estado):
+        sql="UPDATE habitaciones SET hab_estado = {} WHERE hab_numero_hab = '{}'".format(hab_estado ,hab_numero_hab)
         try:
             self.cursor.execute(sql)
             self.conexion.commit()
-            print("Habitación eliminada")
         except Exception as err:
             print('ERROR: No se realizo la operación', err)
         finally:
