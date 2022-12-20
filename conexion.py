@@ -167,8 +167,8 @@ class Conexion:
 
 #-------CRUD Clientes--------------->
 
-    def ingresarCli(self,cli_id, cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM):
-        sql="INSERT INTO clientes(cli_id, cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM) VALUES ({},'{}','{}','{}','{}')".format(cli_id, cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM)
+    def ingresarCli(self,cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM):
+        sql="INSERT INTO clientes(cli_id,cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM) VALUES (NULL,'{}','{}','{}','{}')".format(cli_rut, cli_nombre,cli_apellidoP, cli_apellidoM)
         try:
             self.cursor.execute(sql)
             self.conexion.commit()    
