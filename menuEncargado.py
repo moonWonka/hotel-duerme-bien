@@ -82,6 +82,20 @@ def menuEncargado():
                 print('error al crear habitacion')
             input()
 
+        if opcion == 5:
+            os.system('cls')
+            print('=============== modificar habitacion ====================')
+            
+            numeroHabitacion = input('ingrese el numero de la habitacion: ')
+            costoHabitacion = input('ingrese el costo de la habitacion: ')
+            try:
+                conexionDB = Conexion()
+                conexionDB.modificarHabitacion(numeroHabitacion, int(costoHabitacion))
+                print('habitacion modificada')
+            except:
+                print('error al modificar habitacion')
+            input()
+
         if opcion == 9:
             os.system('cls')
             input("Cerraste sesión")
