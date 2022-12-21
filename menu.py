@@ -8,19 +8,36 @@ os.system('cls')
 
 def menu():
 
-    print("""
-    ===================Menu Principal===================
-    Bienvenido al sistema de registro de pasajeros funte de los deseos
-    ingrese sus credenciales  
-    """)
+    while True:
+        print("""
+        ===================Menu Principal===================
+        Bienvenido al sistema de registro de pasajeros funte de los deseos 
+        
+        
+        
+        
+        Para Ingresar presiona 1 y Enter
+        Para salir presiona 9 y Enter
+        """)
+        opt=int(input("Ingresa Opcion: "))
+        if opt==1:
+            os.system("cls")
+            print("Ingrese sus credenciales: ")
+            entrar =  logIn()
 
-    entrar =  logIn()
+            if entrar:
+                if entrar == 'adm':
+                    menuAdm()
+                elif entrar == 'encargado':
+                    menuEncargado()
+            else:
+                print('error')
+        
+        if opt==9:
+            os.system("cls")
+            input("Adios")
+        
+            break
 
-    if entrar:
-        if entrar == 'adm':
-            menuAdm()
-        elif entrar == 'encargado':
-            menuEncargado()
-    else:
-        print('error')
-
+        else:
+            print("Ingresa una opcion valida")
