@@ -19,7 +19,7 @@ def menuEncargado():
 
         opcion = int(input('ingrese una opcion: '))
 
-        while opcion not in [1, 2, 3, 4, 9]:
+        while opcion not in [1, 2, 3, 4, 5, 9]:
             print('ingrese una opcion correcta UwU')
         
         if opcion == 1:
